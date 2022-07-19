@@ -3,21 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines" : { 
-    "npm" : "=6.14.12",
-    "node" : "=14.16.1"
+  "engines": {
+    "npm": "=6.14.12",
+    "node": "=14.16.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
-  "author": "",
+  "author": "pete",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
     "ccxt": "^1.89.16",
     "dotenv": "^16.0.1",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "trading-indicator": "^1.0.8"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
