@@ -1,19 +1,26 @@
 import { binanceClient } from "./exchangeSetting/binanceConfig.js";
-import { btcConfig } from "./symbolSetting/major.js"
-import axios from 'axios';
+import { btcConfig } from "./symbolSetting/major.js";
+import {bbSignal} from "./strategy/signalBB.js";
+import axios from 'axios'; 
 
 
-const tick = async(btcConfig, binanceClient) => {
+const onTick = async(btcConfig, binanceClient) => {
     const {asset, base, spread, allocation} = btcConfig;
     const market = `${asset}/${base}`;
-    console.log(market);
+    console.log("Market:", market);
+
+    bbSignal(market);
+
+
+
     
     // await binanceClient.loadMarkets();
     // const btc = await binanceClient.market('BTC/USDT')
     // console.log(btc);
 
     // const marketPrice = await binanceClient.fetchTicker(`${market}`)
-    // console.log(marketPrice);
+    // console.log("Bid", marketPrice.bid);
+    // console.log("ask", marketPrice.ask);
 
 
     // cancel exisiting orders
@@ -39,8 +46,7 @@ const tick = async(btcConfig, binanceClient) => {
 
 
 
-    const ohlc = await binanceClient.fetchOHLCV(market, '1h')
-    console.log(ohlc[ohlc.length - 1]);
+    
 } 
 
 // const run = ()=> {
@@ -48,5 +54,4 @@ const tick = async(btcConfig, binanceClient) => {
 // }
 
 // run();
-
-tick(btcConfig, binanceClient); 
+onTick(btcConfig, binanceClient); 
