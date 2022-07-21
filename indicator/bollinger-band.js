@@ -13,7 +13,7 @@ const bollingerBandData = async() => {
         // console.log(bbPrice);
         return bbPrice;
     }catch(err){
-        console.log(err);
+        console.log("bollingerBandData Err: ", err);
     }  
 }
 
