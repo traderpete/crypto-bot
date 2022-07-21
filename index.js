@@ -9,11 +9,11 @@ const onTick = async(btcConfig, binanceClient) => {
     const market = `${asset}/${base}`;
     console.log("Market:", market);
 
-    bbSignal(market);
+    const signal = await bbSignal(market);
+    console.log(signal);
 
-
-
-    
+    // console.log(bbSignal);
+  
     // await binanceClient.loadMarkets();
     // const btc = await binanceClient.market('BTC/USDT')
     // console.log(btc);
@@ -44,9 +44,6 @@ const onTick = async(btcConfig, binanceClient) => {
     // await binanceClient.createLimitSellOrder(market, sellVolume, sellPrice);
     // await binanceClient.createLimitBuyOrder(market, buyVolume, buyPrice);
 
-
-
-    
 } 
 
 // const run = ()=> {

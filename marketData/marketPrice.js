@@ -6,7 +6,7 @@ const marketData = async(market) => {
         barPrevious: ohlc[ohlc.length - 2],
         barPrevious2: ohlc[ohlc.length - 3] 
     }
-    console.log("barPrice:", barPrice);
+    // console.log("barPrice:", barPrice);
     return barPrice;
 }
 
