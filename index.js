@@ -1,4 +1,4 @@
-import { binanceClient } from "./exchangeSetting/binanceConfig.js";
+import { binanceClient } from "./exchangeSetting/ExchangeConfig.js";
 import { btcConfig } from "./symbolSetting/major.js";
 import {bbSignal} from "./strategy/signalBB.js";
 import axios from 'axios'; 
