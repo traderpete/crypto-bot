@@ -1,16 +1,16 @@
 import {bollingerBandData} from "../indicator/bollinger-band.js";
 import {marketData} from "../marketData/marketPrice.js";
 
-const bbSignal = async(market)=>{
+const bbSignal = async(market, timeframe, exchange)=>{
     // Bollinger Band Data
-    const {bbPrevios, bbPrevios2} = await bollingerBandData();
+    const {bbPrevios, bbPrevios2} = await bollingerBandData(market, timeframe, exchange);
     // console.log("bbPrevios2:", bbPrevios2);
     // console.log("bbPrevios:", bbPrevios);
 
     // Market Data
-    const {barPrevious, barPrevious2} = await marketData(market);
+    const {barPrevious, barPrevious2} = await marketData(market, timeframe);
     // console.log("barPrevious", barPrevious);
-    // console.log("barPrevious2", barPrevious2);
+    // console.log("barPrevious2", barPrevious2); 
 
     // Signal Generator
     let signal = "there's no signal";

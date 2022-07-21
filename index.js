@@ -1,18 +1,15 @@
 import { binanceClient } from "./exchangeSetting/ExchangeConfig.js";
-import { btcConfig } from "./symbolSetting/major.js";
-import {bbSignal} from "./strategy/signalBB.js";
+import { bnbConfig } from "./symbolSetting/major.js";
+import {bbSignal} from "./strategy/BBSignal.js";
 import axios from 'axios'; 
 
 
-const onTick = async(btcConfig, binanceClient) => {
-    const {asset, base, spread, allocation} = btcConfig;
-    const market = `${asset}/${base}`;
-    console.log("Market:", market);
+const onTick = async(bnbConfig, binanceClient) => {
+    const {market, timeframe, exchange} = bnbConfig;
 
-    const signal = await bbSignal(market);
+    const signal = await bbSignal(market, timeframe, exchange);
     console.log(signal);
 
-    // console.log(bbSignal);
   
     // await binanceClient.loadMarkets();
     // const btc = await binanceClient.market('BTC/USDT')
@@ -51,4 +48,4 @@ const onTick = async(btcConfig, binanceClient) => {
 // }
 
 // run();
-onTick(btcConfig, binanceClient); 
+onTick(bnbConfig, binanceClient); 

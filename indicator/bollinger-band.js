@@ -2,9 +2,9 @@ import tradingIndicator from 'trading-indicator';
 
 const bb = tradingIndicator.bb;
 
-const bollingerBandData = async() => {
+const bollingerBandData = async(market, timeframe, exchange) => {
     try{
-        let bbData = await bb(20, 2, "close", "binance", "BTC/BUSD", "1h");
+        let bbData = await bb(20, 2, "close", exchange, market, timeframe);
         const bbPrice = {
             // bbNow: bbData[bbData.length - 1],
             bbPrevios: bbData[bbData.length - 2],
