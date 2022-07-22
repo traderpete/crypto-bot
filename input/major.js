@@ -1,6 +1,6 @@
 const bnbConfig = {
     market: "BNB/BUSD", 
-    timeframe: "30m", 
+    timeframe: "1m", 
     exchange: "binance",
     allocation: 0.1,
     spread: 0.2,
