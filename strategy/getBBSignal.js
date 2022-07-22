@@ -1,5 +1,5 @@
-import {bollingerBandData} from "../indicator/bollinger-band.js";
-import {marketData} from "../marketData/marketPrice.js";
+import {bollingerBandData} from "../indicator/getBollingerBandData.js";
+import {marketData} from "../marketData/getMarketPrice.js";
 
 const bbSignal = async(market, timeframe, exchange)=>{
     // Bollinger Band Data
@@ -8,7 +8,7 @@ const bbSignal = async(market, timeframe, exchange)=>{
     // console.log("bbPrevios:", bbPrevios);
 
     // Market Data
-    const {barPrevious, barPrevious2} = await marketData(market, timeframe);
+    const {barPrevious, barPrevious2} = await marketData(market, timeframe, exchange);
     // console.log("barPrevious", barPrevious);
     // console.log("barPrevious2", barPrevious2); 
 

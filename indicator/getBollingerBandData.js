@@ -1,10 +1,13 @@
 import tradingIndicator from 'trading-indicator';
+import { BBInputs } from '../input/bollignerBandInputs.js';
 
 const bb = tradingIndicator.bb;
 
 const bollingerBandData = async(market, timeframe, exchange) => {
     try{
-        let bbData = await bb(20, 2, "close", exchange, market, timeframe);
+        const length = BBInputs.length;
+        const mult = BBInputs.mult;
+        let bbData = await bb(length, mult, "close", exchange, market, timeframe);
         const bbPrice = {
             // bbNow: bbData[bbData.length - 1],
             bbPrevios: bbData[bbData.length - 2],

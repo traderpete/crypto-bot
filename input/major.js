@@ -1,4 +1,4 @@
-const bnbConfig = {
+const marketInputs = {
     market: "BNB/BUSD", 
     timeframe: "1m", 
     exchange: "binance",
@@ -8,5 +8,5 @@ const bnbConfig = {
 };
 
 export{
-    bnbConfig
+    marketInputs
 }
