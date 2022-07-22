@@ -1,16 +1,18 @@
 import { binanceClient } from "./exchangeSetting/ExchangeConfig.js";
-import { bnbConfig } from "./symbolSetting/major.js";
+import { bnbConfig } from "./input/major.js";
 import {bbSignal} from "./strategy/BBSignal.js";
+import {getCurrentTime} from "./utilities/getCurrentTime.js"
+import { isNewBar } from "./utilities/isNewBar.js";
 import axios from 'axios'; 
-
 
 const onTick = async(bnbConfig, binanceClient) => {
     const {market, timeframe, exchange} = bnbConfig;
+    console.log( getCurrentTime());
 
+    // Get BB Signal
     const signal = await bbSignal(market, timeframe, exchange);
-    console.log(signal);
+    console.log("signal:", signal);
 
-  
     // await binanceClient.loadMarkets();
     // const btc = await binanceClient.market('BTC/USDT')
     // console.log(btc);
@@ -40,12 +42,22 @@ const onTick = async(bnbConfig, binanceClient) => {
     // console.log("sellPrice", sellPrice);
     // await binanceClient.createLimitSellOrder(market, sellVolume, sellPrice);
     // await binanceClient.createLimitBuyOrder(market, buyVolume, buyPrice);
-
+    
 } 
 
-// const run = ()=> {
-//     setInterval(tick, config.tickInterval, config, binanceClient);
-// }
+const checkNewBar = async(market, timeframe) =>{
+    // console.log(await isNewBar(market, timeframe));
+    return await isNewBar(market, timeframe);
+}
 
-// run();
-onTick(bnbConfig, binanceClient); 
+const run = ()=> {
+    setInterval(async() => {
+        if(await checkNewBar(bnbConfig.market, bnbConfig.timeframe)){
+            onTick(bnbConfig, binanceClient);
+        }
+    }, 10000);
+}
+
+
+
+run();
