@@ -18,9 +18,9 @@ const onTick = async (market, timeframe, exchange, binanceClient) => {
 
 
   
-  // console.log(await binanceClient.fetchOHLCV(market, timeframe, undefined, 1));
+  console.log(await binanceClient.fetchOHLCV(market, timeframe, undefined, 2));
 
-  console.log(await binanceClient.fetchOrders("CRV/BUSD", 1659511156353));
+  // console.log(await binanceClient.fetchOrders("CRV/BUSD", 1659511156353));
  
   // cancel exisiting orders
   // const orders = await binanceClient.fetchOpenOrders(market);
